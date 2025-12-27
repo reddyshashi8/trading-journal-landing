@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+  </head>
+  <body style="background: {{ site.background_color }}; color: {{ site.text_color }}; font-family: system-ui, -apple-system, sans-serif;">
+    <main style="max-width: 720px; margin: 40px auto; padding: 0 16px;">
+      <h1>{{ site.app_name }}</h1>
+      <p>{{ site.app_description }}</p>
+
+      <p><strong>{{ site.app_price }}</strong></p>
+
+      <a href="#" style="margin-right: 12px;">{{ site.primary_cta }}</a>
+      <a href="#">{{ site.secondary_cta }}</a>
+
+      <section style="margin-top: 32px;">
+        <h2>Why traders love it</h2>
+        <ul>
+          {% for feature in site.features %}
+          <li>
+            <strong>{{ feature.title }}</strong> — {{ feature.description }}
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <footer style="margin-top: 40px; font-size: 14px;">
+        Built by <a href="{{ site.your_link }}">{{ site.your_name }}</a>
+      </footer>
+    </main>
+  </body>
+</html>
