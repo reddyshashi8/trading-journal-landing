@@ -1,4 +1,622 @@
----
-layout: default
-title: Trading Journal
----
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Trading Journal by TheMrPercent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Trading Journal by TheMrPercent turns every trade into a learning moment with AI-powered coaching, playbook grading, and performance analytics."
+    />
+    <style>
+      :root {
+        --bg: #020617;
+        --bg-soft: #020617;
+        --bg-elevated: #020617;
+        --border-subtle: rgba(51, 65, 85, 0.7);
+        --primary: #3b82f6;
+        --primary-soft: rgba(59, 130, 246, 0.18);
+        --accent: #a855f7;
+        --accent-soft: rgba(168, 85, 247, 0.2);
+        --text-main: #e5e7eb;
+        --text-muted: #9ca3af;
+        --text-soft: #6b7280;
+        --success: #22c55e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        color: var(--text-main);
+        background: radial-gradient(circle at top, #0f172a 0, #020617 52%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* Header */
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        border-bottom: 1px solid rgba(30, 64, 175, 0.4);
+        background: linear-gradient(
+          to bottom,
+          rgba(15, 23, 42, 0.92),
+          rgba(15, 23, 42, 0.86)
+        );
+        backdrop-filter: blur(18px);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.9rem 0;
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .logo-circle {
+        height: 40px;
+        width: 40px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: conic-gradient(
+          from 180deg,
+          #3b82f6,
+          #a855f7,
+          #22c55e,
+          #3b82f6
+        );
+        box-shadow: 0 12px 30px rgba(59, 130, 246, 0.45);
+      }
+
+      .logo-icon {
+        font-size: 1.15rem;
+        color: white;
+        font-weight: 700;
+      }
+
+      .brand-title {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+
+      .brand-subtitle {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--text-soft);
+      }
+
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.5rem 1.1rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #020617;
+        background: white;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.4);
+        transition: transform 0.12s ease, box-shadow 0.12s ease,
+          background 0.12s ease;
+      }
+
+      .nav-cta:hover {
+        transform: translateY(-1px);
+        background: #e5e7eb;
+        box-shadow: 0 14px 32px rgba(15, 23, 42, 0.55);
+      }
+
+      /* Hero */
+
+      .hero {
+        padding: 3.5rem 0 1.5rem;
+      }
+
+      .hero-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.2rem 0.85rem;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: #bfdbfe;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.4);
+      }
+
+      .badge-dot {
+        height: 6px;
+        width: 6px;
+        border-radius: 999px;
+        background: #22c55e;
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.25);
+      }
+
+      .hero-title {
+        margin: 1.4rem 0 0.8rem;
+        font-size: clamp(2.6rem, 5vw, 3.75rem);
+        font-weight: 800;
+        line-height: 1.05;
+      }
+
+      .hero-title span {
+        background: linear-gradient(to right, #3b82f6, #a855f7);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-subtitle {
+        max-width: 620px;
+        margin: 0 auto;
+        font-size: 1.02rem;
+        line-height: 1.7;
+        color: var(--text-muted);
+      }
+
+      .hero-points {
+        max-width: 720px;
+        margin: 1.9rem auto 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 0.9rem 1.4rem;
+        text-align: left;
+      }
+
+      .hero-point {
+        display: flex;
+        gap: 0.65rem;
+        font-size: 0.9rem;
+        color: #cbd5f5;
+      }
+
+      .hero-point-icon {
+        margin-top: 0.15rem;
+        height: 18px;
+        width: 18px;
+        border-radius: 999px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(34, 197, 94, 0.12);
+        color: #4ade80;
+        font-size: 12px;
+      }
+
+      .hero-ctas {
+        margin-top: 1.8rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.9rem;
+      }
+
+      @media (min-width: 640px) {
+        .hero-ctas {
+          flex-direction: row;
+          justify-content: center;
+        }
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        padding: 0.9rem 1.9rem;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.98rem;
+        font-weight: 600;
+        background: linear-gradient(to right, #2563eb, #3b82f6);
+        color: white;
+        box-shadow: 0 18px 45px rgba(37, 99, 235, 0.55);
+        transition: transform 0.13s ease, box-shadow 0.13s ease,
+          filter 0.13s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.05);
+        box-shadow: 0 20px 55px rgba(37, 99, 235, 0.7);
+      }
+
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.9rem 1.8rem;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.7);
+        background: transparent;
+        color: var(--text-main);
+        cursor: pointer;
+        font-size: 0.96rem;
+        font-weight: 500;
+        transition: background 0.13s ease, border-color 0.13s ease,
+          color 0.13s ease;
+      }
+
+      .btn-outline:hover {
+        background: rgba(15, 23, 42, 0.85);
+        border-color: rgba(148, 163, 184, 1);
+      }
+
+      .hero-note {
+        margin-top: 0.75rem;
+        font-size: 0.78rem;
+        color: var(--text-soft);
+      }
+
+      /* Pillars */
+
+      .pillars {
+        border-top: 1px solid rgba(30, 64, 175, 0.45);
+        margin-top: 2.75rem;
+        padding: 2.75rem 0 3.25rem;
+      }
+
+      .pillars-inner {
+        max-width: 1040px;
+        margin: 0 auto;
+      }
+
+      .pillars-title {
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 1.9rem;
+      }
+
+      .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.4rem;
+      }
+
+      .pillar-card {
+        border-radius: 1rem;
+        background: radial-gradient(circle at top left, #1e293b, #020617);
+        border: 1px solid rgba(30, 64, 175, 0.6);
+        padding: 1.35rem 1.2rem 1.3rem;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      }
+
+      .pillar-icon {
+        height: 40px;
+        width: 40px;
+        border-radius: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+        font-size: 1.15rem;
+      }
+
+      .pillar-icon.ai {
+        background: var(--accent-soft);
+        color: #e9d5ff;
+      }
+
+      .pillar-icon.playbook {
+        background: rgba(34, 197, 94, 0.18);
+        color: #bbf7d0;
+      }
+
+      .pillar-icon.metrics {
+        background: var(--primary-soft);
+        color: #bfdbfe;
+      }
+
+      .pillar-title {
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+
+      .pillar-kicker {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--text-soft);
+        margin-bottom: 0.6rem;
+      }
+
+      .pillar-body {
+        font-size: 0.86rem;
+        color: var(--text-muted);
+        margin-bottom: 0.7rem;
+      }
+
+      .pillar-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 0.82rem;
+        color: #cbd5f5;
+      }
+
+      .pillar-list li {
+        display: flex;
+        gap: 0.45rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .pillar-bullet {
+        margin-top: 0.28rem;
+        height: 8px;
+        width: 8px;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.8);
+      }
+
+      /* Footer */
+
+      footer {
+        border-top: 1px solid rgba(31, 41, 55, 0.9);
+        padding: 1.3rem 0 1.7rem;
+        color: var(--text-soft);
+        font-size: 0.8rem;
+      }
+
+      .footer-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        align-items: flex-start;
+      }
+
+      @media (min-width: 640px) {
+        .footer-inner {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+
+      .footer-link {
+        color: #93c5fd;
+      }
+    </style>
+
+    <script>
+      function goToApp() {
+        window.location.href = "https://app.themrpercent.com";
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <div class="nav-left">
+          <div class="logo-circle">
+            <span class="logo-icon">TJ</span>
+          </div>
+          <div>
+            <div class="brand-title">Trading Journal</div>
+            <div class="brand-subtitle">BY THEMRPERCENT</div>
+          </div>
+        </div>
+        <button class="nav-cta" onclick="goToApp()">
+          <span>Sign in</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>AI‑Powered Trading Coach</span>
+          </div>
+
+          <h1 class="hero-title">
+            Stop Tracking.<br />
+            <span>Start Coaching.</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Trading Journal by TheMrPercent turns every trade into a learning
+            moment with AI‑powered coaching, playbook grading, and personality
+            insights so you become a more disciplined trader.
+          </p>
+
+          <div class="hero-points">
+            <div class="hero-point">
+              <div class="hero-point-icon">✓</div>
+              <div>
+                Catch mistakes before they become patterns – AI reviews every
+                session.
+              </div>
+            </div>
+            <div class="hero-point">
+              <div class="hero-point-icon">✓</div>
+              <div>
+                Build confidence with proven playbooks – grade every trade A–F.
+              </div>
+            </div>
+            <div class="hero-point">
+              <div class="hero-point-icon">✓</div>
+              <div>
+                Actually learn from your trades – weekly coaching loops replace
+                spreadsheets.
+              </div>
+            </div>
+            <div class="hero-point">
+              <div class="hero-point-icon">✓</div>
+              <div>
+                Track discipline, not just dollars – compete on streaks and
+                process.
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-ctas">
+            <button class="btn-primary" onclick="goToApp()">
+              <span>Start Free Journal</span>
+              <span>→</span>
+            </button>
+            <button class="btn-outline" onclick="goToApp()">
+              <span>Watch 2‑Minute Demo</span>
+            </button>
+          </div>
+
+          <p class="hero-note">
+            Free plan includes unlimited trades and AI reviews. No credit card
+            required.
+          </p>
+        </div>
+      </section>
+
+      <section class="pillars">
+        <div class="container pillars-inner">
+          <h2 class="pillars-title">
+            Beyond spreadsheets. Beyond basic journals.
+          </h2>
+
+          <div class="pillars-grid">
+            <article class="pillar-card">
+              <div class="pillar-icon ai">★</div>
+              <div class="pillar-kicker">Pillar 1</div>
+              <h3 class="pillar-title">AI coach in your journal</h3>
+              <p class="pillar-body">
+                Daily feedback that actually changes behavior instead of just
+                logging P&amp;L.
+              </p>
+              <ul class="pillar-list">
+                <li>
+                  <span class="pillar-bullet"></span>
+                  <span
+                    >End‑of‑day AI reviews with 3 strengths, 3 problems, and one
+                    rule for tomorrow.</span
+                  >
+                </li>
+                <li>
+                  <span class="pillar-bullet"></span>
+                  <span
+                    >Weekly coaching sessions catch recurring mistakes and
+                    suggest experiments.</span
+                  >
+                </li>
+              </ul>
+            </article>
+
+            <article class="pillar-card">
+              <div class="pillar-icon playbook">✓</div>
+              <div class="pillar-kicker">Pillar 2</div>
+              <h3 class="pillar-title">Playbook‑first discipline</h3>
+              <p class="pillar-body">
+                Grade every trade against your best setups so you reinforce the
+                process that actually works.
+              </p>
+              <ul class="pillar-list">
+                <li>
+                  <span class="pillar-bullet"></span>
+                  <span
+                    >Tag trades by playbook and grade A–F to see where you
+                    really have edge.</span
+                  >
+                </li>
+                <li>
+                  <span class="pillar-bullet"></span>
+                  <span
+                    >Turn your rules into checklists so you stop breaking them
+                    in the moment.</span
+                  >
+                </li>
+              </ul>
+            </article>
+
+            <article class="pillar-card">
+              <div class="pillar-icon metrics">📈</div>
+              <div class="pillar-kicker">Pillar 3</div>
+              <h3 class="pillar-title">Serious performance analytics</h3>
+              <p class="pillar-body">
+                Know exactly where your risk, expectancy, and edge live without
+                drowning in spreadsheets.
+              </p>
+              <ul class="pillar-list">
+                <li>
+                  <span class="pillar-bullet"></span>
+                  <span
+                    >Equity curves, drawdowns, win rate, and expectancy in one
+                    clean dashboard.</span
+                  >
+                </li>
+                <li>
+                  <span class="pillar-bullet"></span>
+                  <span
+                    >Slice results by setup, time of day, and market condition
+                    to find your unfair advantage.</span
+                  >
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div>© <span id="year"></span> Trading Journal by TheMrPercent.</div>
+        <div>
+          App powered by Base44 ·
+          <a
+            class="footer-link"
+            href="https://app.themrpercent.com"
+            target="_blank"
+            rel="noreferrer"
+            >Open the app</a
+          >
+        </div>
+      </div>
+      <script>
+        document.getElementById("year").textContent =
+          new Date().getFullYear();
+      </script>
+    </footer>
+  </body>
+</html>
