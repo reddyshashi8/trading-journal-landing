@@ -1,87 +1,186 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>Trading Journal by TheMrPercent™️</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="AI-powered trading journal and coach. Build discipline, grade playbooks, and improve consistency with Trading Journal by TheMrPercent." />
+  <meta charset="utf-8" />
+  <title>Trading Journal by TheMrPercent™️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="AI-powered trading journal and coach. Build discipline, grade playbooks, and improve consistency with Trading Journal by TheMrPercent." />
 
-<style>
-:root {
-  --bg: #020617;
-  --primary: #3b82f6;
-  --accent: #a855f7;
-  --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
-  --text-soft: #6b7280;
-  --accent-soft: rgba(168, 85, 247, 0.2);
-  --primary-soft: rgba(59, 130, 246, 0.18);
-}
+  <style>
+    :root {
+      --bg: #020617;
+      --primary: #3b82f6;
+      --accent: #a855f7;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --text-soft: #6b7280;
+      --accent-soft: rgba(168, 85, 247, 0.2);
+      --primary-soft: rgba(59, 130, 246, 0.18);
+    }
 
-/* Reset */
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: radial-gradient(circle at top, #0f172a, #020617 55%); color: var(--text-main); line-height:1.5; }
-a { text-decoration:none; }
+    /* Reset */
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0f172a, #020617 55%);
+      color: var(--text-main);
+      line-height:1.5;
+    }
+    a { text-decoration:none; color:inherit; }
 
-/* Container */
-.container { max-width:1120px; margin:0 auto; padding:0 1.5rem; }
+    /* Container */
+    .container { max-width:1120px; margin:0 auto; padding:0 1.5rem; }
 
-/* Header */
-header { position: sticky; top:0; z-index:50; backdrop-filter: blur(18px); background: rgba(2,6,23,0.85); border-bottom: 1px solid rgba(59,130,246,0.35);}
-.nav { display:flex; justify-content:space-between; align-items:center; padding:0.9rem 0; }
-.nav-left { display:flex; align-items:center; gap:0.75rem; }
-.logo-circle { width:40px;height:40px;border-radius:999px;background:black;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;}
-.brand-title { font-weight:700; }
-.brand-subtitle { font-size:0.7rem; letter-spacing:0.14em; color: var(--text-soft);}
-.nav-cta { padding:0.55rem 1.2rem; border-radius:999px; background:white; color:#020617; font-weight:600; border:none; cursor:pointer; transition:all 0.15s ease;}
-.nav-cta:hover { transform: translateY(-1px); background:#e5e7eb; }
+    /* Header */
+    header {
+      position: sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(18px);
+      background: rgba(2,6,23,0.85);
+      border-bottom: 1px solid rgba(59,130,246,0.35);
+    }
+    .nav { display:flex; justify-content:space-between; align-items:center; padding:0.9rem 0; }
+    .nav-left { display:flex; align-items:center; gap:0.75rem; }
+    .logo-circle {
+      width:40px;height:40px;border-radius:999px;
+      background:black;display:flex;align-items:center;justify-content:center;
+      font-weight:900;font-size:22px;
+    }
+    .brand-title { font-weight:700; }
+    .brand-subtitle { font-size:0.7rem; letter-spacing:0.14em; color: var(--text-soft);}
+    .nav-cta {
+      padding:0.55rem 1.2rem; border-radius:999px;
+      background:white; color:#020617; font-weight:600;
+      border:none; cursor:pointer; transition:all 0.15s ease;
+    }
+    .nav-cta:hover { transform: translateY(-1px); background:#e5e7eb; }
 
-/* Hero */
-.hero { padding:4rem 0 2.5rem; text-align:center; }
-.badge { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.16em; color:#bfdbfe; padding:0.25rem 0.9rem; border-radius:999px; border:1px solid rgba(59,130,246,0.4); background:rgba(59,130,246,0.1);}
-.badge-dot { width:6px; height:6px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 6px rgba(34,197,94,0.25);}
-.hero-title { margin:1.5rem auto 0.8rem; font-size:clamp(2.7rem,5vw,3.9rem); font-weight:800; line-height:1.05; }
-.hero-title span { background:linear-gradient(to right,#3b82f6,#a855f7); -webkit-background-clip:text; background-clip:text; color:transparent;}
-.hero-subtitle { max-width:640px; margin:0 auto; color:var(--text-muted); line-height:1.7; font-size:1.05rem; }
+    /* Hero */
+    .hero { padding:4rem 0 2.5rem; text-align:center; }
+    .badge {
+      display:inline-flex; align-items:center; gap:0.5rem;
+      font-size:0.75rem; text-transform:uppercase; letter-spacing:0.16em;
+      color:#bfdbfe; padding:0.25rem 0.9rem; border-radius:999px;
+      border:1px solid rgba(59,130,246,0.4); background:rgba(59,130,246,0.1);
+    }
+    .badge-dot {
+      width:6px; height:6px; border-radius:50%;
+      background:#22c55e; box-shadow:0 0 0 6px rgba(34,197,94,0.25);
+    }
+    .hero-title {
+      margin:1.5rem auto 0.8rem;
+      font-size:clamp(2.7rem,5vw,3.9rem);
+      font-weight:800; line-height:1.05;
+    }
+    .hero-title span {
+      background:linear-gradient(to right,#3b82f6,#a855f7);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .hero-subtitle {
+      max-width:640px; margin:0 auto;
+      color:var(--text-muted); line-height:1.7; font-size:1.05rem;
+    }
 
-/* Conversion */
-.hero-conversion { margin-top:2.2rem; text-align:center;}
-.hero-conversion-title { font-size:1.45rem; font-weight:700; margin-bottom:0.4rem; }
-.hero-conversion-subtitle { font-size:0.95rem; color: var(--text-muted); margin-bottom:1.2rem; }
-.cta-primary { padding:0.75rem 1.8rem; border-radius:999px; background:linear-gradient(to right,#3b82f6,#a855f7); color:white; font-weight:600; border:none; cursor:pointer; box-shadow:0 15px 35px rgba(59,130,246,0.45); transition:transform 0.15s ease, box-shadow 0.15s ease;}
-.cta-primary:hover { transform:translateY(-1px); box-shadow:0 20px 45px rgba(168,85,247,0.5); }
+    /* Conversion */
+    .hero-conversion { margin-top:2.2rem; text-align:center;}
+    .hero-conversion-title { font-size:1.45rem; font-weight:700; margin-bottom:0.4rem; }
+    .hero-conversion-subtitle { font-size:0.95rem; color: var(--text-muted); margin-bottom:1.2rem; }
+    .cta-primary {
+      padding:0.75rem 1.8rem; border-radius:999px;
+      background:linear-gradient(to right,#3b82f6,#a855f7);
+      color:white; font-weight:600; border:none; cursor:pointer;
+      box-shadow:0 15px 35px rgba(59,130,246,0.45);
+      transition:transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .cta-primary:hover { transform:translateY(-1px); box-shadow:0 20px 45px rgba(168,85,247,0.5); }
 
-/* Add-to-Home Banner */
-.add-to-home-info { max-width:480px; margin:1.5rem auto 0; font-size:0.9rem; color:var(--text-soft); line-height:1.4; background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.4); border-radius:12px; padding:0.9rem 1rem; text-align:center; }
+    /* Add-to-Home Banner */
+    .add-to-home-info {
+      max-width:480px; margin:1.5rem auto 0;
+      font-size:0.9rem; color:var(--text-soft); line-height:1.4;
+      background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.4);
+      border-radius:12px; padding:0.9rem 1rem; text-align:center;
+    }
 
-/* Coming Soon Banner */
-.coming-soon-banner { display:flex; flex-direction:column; align-items:center; gap:0.6rem; background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.4); border-radius:12px; padding:1rem 1.2rem; max-width:480px; margin:2rem auto 0; text-align:center; position:relative;}
-.coming-soon-banner p { margin:0; font-size:0.9rem; color:var(--text-soft); line-height:1.4; }
-.app-icons { display:flex; gap:1rem; margin-top:0.8rem; }
-.app-icons img { width:120px; height:auto; opacity:0.7; filter:grayscale(70%); cursor:pointer; transition: transform 0.2s ease, filter 0.2s ease; position:relative; }
-.app-icons img:hover { transform:scale(1.05); filter:grayscale(0); }
-.tooltip { position:absolute; bottom:70px; left:50%; transform:translateX(-50%) translateY(5px); background: rgba(0,0,0,0.85); color: #fff; font-size:0.75rem; padding:6px 10px; border-radius:6px; text-align:center; width:200px; opacity:0; pointer-events:none; transition:opacity 0.25s, transform 0.25s; }
-.app-icons img:hover + .tooltip { opacity:1; transform:translateX(-50%) translateY(0); }
+    /* Coming Soon Banner */
+    .coming-soon-banner {
+      display:flex; flex-direction:column; align-items:center; gap:0.6rem;
+      background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.4);
+      border-radius:12px; padding:1rem 1.2rem; max-width:480px;
+      margin:2rem auto 0; text-align:center; position:relative;
+    }
+    .coming-soon-banner p { margin:0; font-size:0.9rem; color:var(--text-soft); line-height:1.4; }
+    .app-icons { display:flex; gap:1rem; margin-top:0.8rem; }
+    .app-icons img {
+      width:120px; height:auto; opacity:0.7; filter:grayscale(70%);
+      cursor:pointer; transition: transform 0.2s ease, filter 0.2s ease;
+      position:relative;
+    }
+    .app-icons img:hover { transform:scale(1.05); filter:grayscale(0); }
+    .tooltip {
+      position:absolute; bottom:70px; left:50%;
+      transform:translateX(-50%) translateY(5px);
+      background: rgba(0,0,0,0.85); color: #fff;
+      font-size:0.75rem; padding:6px 10px; border-radius:6px;
+      text-align:center; width:200px; opacity:0;
+      pointer-events:none; transition:opacity 0.25s, transform 0.25s;
+    }
+    .app-icons img:hover + .tooltip {
+      opacity:1; transform:translateX(-50%) translateY(0);
+    }
 
-/* Pillars */
-.pillars { margin-top:4rem; padding:3rem 0; border-top:1px solid rgba(59,130,246,0.3);}
-.pillars-title { text-align:center; font-size:1.7rem; margin-bottom:2rem;}
-.pillars-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; }
-.pillar-card { border-radius:1rem; background:radial-gradient(circle at top left,#1e293b,#020617); border:1px solid rgba(59,130,246,0.5); padding:1.5rem; box-shadow:0 15px 30px rgba(0,0,0,0.3); opacity:0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-.pillar-card.visible { opacity:1; transform: translateY(0);}
-.pillar-icon { width:40px;height:40px; border-radius:0.75rem; display:flex; align-items:center; justify-content:center; margin-bottom:0.7rem; font-size:1.1rem;}
-.ai { background:var(--accent-soft);}
-.playbook { background:rgba(34,197,94,0.18);}
-.metrics { background:var(--primary-soft);}
+    /* Pillars */
+    .pillars { margin-top:4rem; padding:3rem 0; border-top:1px solid rgba(59,130,246,0.3);}
+    .pillars-title { text-align:center; font-size:1.7rem; margin-bottom:2rem;}
+    .pillars-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem;
+    }
+    .pillar-card {
+      border-radius:1rem;
+      background:radial-gradient(circle at top left,#1e293b,#020617);
+      border:1px solid rgba(59,130,246,0.5);
+      padding:1.5rem;
+      box-shadow:0 15px 30px rgba(0,0,0,0.3);
+      opacity:0; transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .pillar-card.visible { opacity:1; transform: translateY(0);}
+    .pillar-icon {
+      width:40px;height:40px; border-radius:0.75rem;
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:0.7rem; font-size:1.1rem;
+    }
+    .ai { background:var(--accent-soft);}
+    .playbook { background:rgba(34,197,94,0.18);}
+    .metrics { background:var(--primary-soft);}
 
-/* Footer */
-footer { border-top:1px solid rgba(31,41,55,0.9); padding:1.5rem 0; font-size:0.8rem; color:var(--text-soft);}
-.footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.8rem; align-items:center;}
-.social-icons { display:flex; gap:0.8rem; }
-.social-icons img { width:32px; height:32px; transition: transform 0.15s ease; cursor:pointer; }
-.social-icons img:hover { transform:scale(1.1); }
+    /* Footer */
+    footer {
+      border-top:1px solid rgba(31,41,55,0.9);
+      padding:1.5rem 0;
+      font-size:0.8rem;
+      color:var(--text-soft);
+    }
+    .footer-inner {
+      display:flex; justify-content:space-between;
+      flex-wrap:wrap; gap:0.8rem; align-items:center;
+    }
+    .social-icons { display:flex; gap:0.8rem; }
+    .social-icons img {
+      width:28px; height:28px;
+      display:block;
+      object-fit:contain;
+      filter: drop-shadow(0 0 6px rgba(15,23,42,0.6));
+      transition: transform 0.15s ease;
+      cursor:pointer;
+    }
+    .social-icons img:hover { transform:scale(1.1); }
 
-</style>
+    @media (max-width:640px) {
+      .hero { padding-top:3.25rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -94,57 +193,63 @@ footer { border-top:1px solid rgba(31,41,55,0.9); padding:1.5rem 0; font-size:0.
         <div class="brand-subtitle">BY THEMRPERCENT™️</div>
       </div>
     </div>
-    <button class="nav-cta" onclick="window.location.href='https://app.themrpercent.com/login?from_url=https%3A%2F%2Fapp.themrpercent.com%2F';">Sign in</button>
+    <button class="nav-cta" onclick="window.location.href='https://app.themrpercent.com/login?from_url=https%3A%2F%2Fapp.themrpercent.com%2F';">
+      Sign in
+    </button>
   </div>
 </header>
 
 <main>
-<section class="hero container">
-  <div class="badge"><span class="badge-dot"></span> AI-Powered Trading Coach</div>
-  <h1 class="hero-title">Stop Tracking.<br /><span>Start Coaching.</span></h1>
-  <p class="hero-subtitle">A trading journal that actually fixes behavior — with AI coaching, playbook discipline, and serious performance analytics.</p>
+  <section class="hero container">
+    <div class="badge"><span class="badge-dot"></span> AI-Powered Trading Coach</div>
+    <h1 class="hero-title">Stop Tracking.<br /><span>Start Coaching.</span></h1>
+    <p class="hero-subtitle">
+      A trading journal that actually fixes behavior — with AI coaching, playbook discipline, and serious performance analytics.
+    </p>
 
-  <div class="hero-conversion">
-    <h2 class="hero-conversion-title">Journal smarter. Trade disciplined.</h2>
-    <p class="hero-conversion-subtitle">Free plan. Unlimited trades. No credit card required.</p>
-    <button class="cta-primary" onclick="window.location.href='https://app.themrpercent.com/login?from_url=https%3A%2F%2Fapp.themrpercent.com%2F';">Start for free</button>
-  </div>
+    <div class="hero-conversion">
+      <h2 class="hero-conversion-title">Journal smarter. Trade disciplined.</h2>
+      <p class="hero-conversion-subtitle">Free plan. Unlimited trades. No credit card required.</p>
+      <button class="cta-primary" onclick="window.location.href='https://app.themrpercent.com/login?from_url=https%3A%2F%2Fapp.themrpercent.com%2F';">
+        Start for free
+      </button>
+    </div>
 
-  <div id="a2hs-banner" class="add-to-home-info">
-    Not on the App Store yet? Open this page in your browser, click the <strong>Share</strong> button, and select <strong>Add to Home Screen</strong>.
-  </div>
+    <div id="a2hs-banner" class="add-to-home-info">
+      Not on the App Store yet? Open this page in your browser, click the <strong>Share</strong> button, and select <strong>Add to Home Screen</strong>.
+    </div>
 
-  <div class="coming-soon-banner">
-    <p>Coming soon on App Store & Play Store.</p>
-    <div class="app-icons">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg" alt="App Store Coming Soon">
-      <span class="tooltip">Coming Soon — Open in browser & Add to Home Screen</span>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store Coming Soon">
-      <span class="tooltip">Coming Soon — Open in browser & Add to Home Screen</span>
+    <div class="coming-soon-banner">
+      <p>Coming soon on App Store & Play Store.</p>
+      <div class="app-icons">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg" alt="App Store Coming Soon">
+        <span class="tooltip">Coming Soon — Open in browser & Add to Home Screen</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store Coming Soon">
+        <span class="tooltip">Coming Soon — Open in browser & Add to Home Screen</span>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="pillars container">
-  <h2 class="pillars-title">Built for traders who care about process</h2>
-  <div class="pillars-grid">
-    <div class="pillar-card">
-      <div class="pillar-icon ai">★</div>
-      <h3>AI Trade Coaching</h3>
-      <p>Daily and weekly reviews highlight mistakes, reinforce strengths, and set rules for tomorrow.</p>
+  <section class="pillars container">
+    <h2 class="pillars-title">Built for traders who care about process</h2>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon ai">★</div>
+        <h3>AI Trade Coaching</h3>
+        <p>Daily and weekly reviews highlight mistakes, reinforce strengths, and set rules for tomorrow.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon playbook">✓</div>
+        <h3>Playbook Discipline</h3>
+        <p>Grade every trade against your setups so edge comes from process, not luck.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon metrics">📈</div>
+        <h3>Real Performance Metrics</h3>
+        <p>Understand expectancy, drawdowns, and edge without drowning in data.</p>
+      </div>
     </div>
-    <div class="pillar-card">
-      <div class="pillar-icon playbook">✓</div>
-      <h3>Playbook Discipline</h3>
-      <p>Grade every trade against your setups so edge comes from process, not luck.</p>
-    </div>
-    <div class="pillar-card">
-      <div class="pillar-icon metrics">📈</div>
-      <h3>Real Performance Metrics</h3>
-      <p>Understand expectancy, drawdowns, and edge without drowning in data.</p>
-    </div>
-  </div>
-</section>
+  </section>
 </main>
 
 <footer>
@@ -152,7 +257,7 @@ footer { border-top:1px solid rgba(31,41,55,0.9); padding:1.5rem 0; font-size:0.
     <div>© <span id="year"></span> TheMrPercent™️</div>
     <div class="social-icons">
       <a href="https://x.com/themrpercent?s=21&t=nNzcrwpDWD9_GICwgmbXMw" target="_blank" rel="noreferrer">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/X-Logo.svg" alt="X Profile">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg" alt="X Profile">
       </a>
       <a href="https://discord.gg/XrxW2FZv4" target="_blank" rel="noreferrer">
         <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Discord_logo.svg" alt="Discord">
@@ -178,5 +283,6 @@ footer { border-top:1px solid rgba(31,41,55,0.9); padding:1.5rem 0; font-size:0.
     pillars.forEach(pillar => observer.observe(pillar));
   </script>
 </footer>
+
 </body>
 </html>
