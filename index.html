@@ -45,7 +45,7 @@
         padding: 0 1.5rem;
       }
 
-      /* ---------------- Header ---------------- */
+      /* ================= Header ================= */
 
       header {
         position: sticky;
@@ -107,7 +107,7 @@
         background: #e5e7eb;
       }
 
-      /* ---------------- Hero ---------------- */
+      /* ================= Hero ================= */
 
       .hero {
         padding: 4rem 0 2.5rem;
@@ -157,12 +157,23 @@
         font-size: 1.05rem;
       }
 
-      .hero-cta {
-        margin-top: 1.8rem;
-        display: flex;
-        justify-content: center;
-        gap: 0.8rem;
-        flex-wrap: wrap;
+      /* ===== Conversion Section ===== */
+
+      .hero-conversion {
+        margin-top: 2.2rem;
+        text-align: center;
+      }
+
+      .hero-conversion-title {
+        font-size: 1.45rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+      }
+
+      .hero-conversion-subtitle {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        margin-bottom: 1.2rem;
       }
 
       .cta-primary {
@@ -174,43 +185,15 @@
         border: none;
         cursor: pointer;
         box-shadow: 0 15px 35px rgba(59, 130, 246, 0.45);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
       }
 
-      .cta-secondary {
-        padding: 0.75rem 1.8rem;
-        border-radius: 999px;
-        border: 1px solid var(--border-subtle);
-        color: #cbd5f5;
+      .cta-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 20px 45px rgba(168, 85, 247, 0.5);
       }
 
-      /* ---------------- Social Proof ---------------- */
-
-      .stats {
-        margin-top: 3rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 1.2rem;
-      }
-
-      .stat {
-        border: 1px solid var(--border-subtle);
-        border-radius: 1rem;
-        padding: 1.3rem;
-        background: rgba(15, 23, 42, 0.65);
-      }
-
-      .stat strong {
-        font-size: 1.5rem;
-      }
-
-      .stat span {
-        display: block;
-        margin-top: 0.3rem;
-        font-size: 0.85rem;
-        color: var(--text-soft);
-      }
-
-      /* ---------------- Pillars ---------------- */
+      /* ================= Pillars ================= */
 
       .pillars {
         margin-top: 4rem;
@@ -248,51 +231,19 @@
         font-size: 1.1rem;
       }
 
-      .ai { background: var(--accent-soft); }
-      .playbook { background: rgba(34,197,94,0.18); }
-      .metrics { background: var(--primary-soft); }
-
-      /* ---------------- Testimonials ---------------- */
-
-      .testimonials {
-        padding: 3rem 0;
-        border-top: 1px solid var(--border-subtle);
+      .ai {
+        background: var(--accent-soft);
       }
 
-      .testimonial {
-        max-width: 780px;
-        margin: 0 auto 1.8rem;
-        font-size: 1.05rem;
-        color: #cbd5f5;
-        text-align: center;
+      .playbook {
+        background: rgba(34, 197, 94, 0.18);
       }
 
-      .testimonial span {
-        display: block;
-        margin-top: 0.6rem;
-        font-size: 0.85rem;
-        color: var(--text-soft);
+      .metrics {
+        background: var(--primary-soft);
       }
 
-      /* ---------------- Final CTA ---------------- */
-
-      .final-cta {
-        text-align: center;
-        padding: 3.5rem 0;
-        border-top: 1px solid rgba(168, 85, 247, 0.4);
-      }
-
-      .final-cta h2 {
-        font-size: 2rem;
-        margin-bottom: 0.8rem;
-      }
-
-      .final-cta p {
-        color: var(--text-muted);
-        margin-bottom: 1.5rem;
-      }
-
-      /* ---------------- Footer ---------------- */
+      /* ================= Footer ================= */
 
       footer {
         border-top: 1px solid rgba(31, 41, 55, 0.9);
@@ -323,7 +274,7 @@
 
         <button
           class="nav-cta"
-          onclick="window.location.href='https://app.themrpercent.com/login';"
+          onclick="window.location.href='https://app.themrpercent.com/login?from_url=https%3A%2F%2Fapp.themrpercent.com%2F';"
         >
           Sign in
         </button>
@@ -345,28 +296,24 @@
           playbook discipline, and serious performance analytics.
         </p>
 
-        <div class="hero-cta">
-          <button class="cta-primary">Start Free</button>
-          <a class="cta-secondary" href="#pillars">See how it works</a>
-        </div>
+        <div class="hero-conversion">
+          <h2 class="hero-conversion-title">
+            Journal smarter. Trade disciplined.
+          </h2>
+          <p class="hero-conversion-subtitle">
+            Free plan. Unlimited trades. No credit card required.
+          </p>
 
-        <div class="stats">
-          <div class="stat">
-            <strong>10,000+</strong>
-            <span>Trades reviewed by AI</span>
-          </div>
-          <div class="stat">
-            <strong>72%</strong>
-            <span>Users improve discipline score</span>
-          </div>
-          <div class="stat">
-            <strong>0</strong>
-            <span>Spreadsheets required</span>
-          </div>
+          <button
+            class="cta-primary"
+            onclick="window.location.href='https://app.themrpercent.com/login?from_url=https%3A%2F%2Fapp.themrpercent.com%2F';"
+          >
+            Start for free
+          </button>
         </div>
       </section>
 
-      <section id="pillars" class="pillars container">
+      <section class="pillars container">
         <h2 class="pillars-title">
           Built for traders who care about process
         </h2>
@@ -400,31 +347,15 @@
           </div>
         </div>
       </section>
-
-      <section class="testimonials container">
-        <p class="testimonial">
-          “This is the first journal that actually made me stop breaking rules.
-          The AI feedback is brutal — in a good way.”
-          <span>— Active futures trader</span>
-        </p>
-      </section>
-
-      <section class="final-cta container">
-        <h2>Journal smarter. Trade disciplined.</h2>
-        <p>Free plan. Unlimited trades. No credit card required.</p>
-        <button
-          class="cta-primary"
-          onclick="window.location.href='https://app.themrpercent.com/login';"
-        >
-          Start Free
-        </button>
-      </section>
     </main>
 
     <footer>
       <div class="container footer-inner">
         <div>© <span id="year"></span> TheMrPercent™️</div>
-        <a href="https://app.themrpercent.com/login">Open the app</a>
+        <a
+          href="https://app.themrpercent.com/login?from_url=https%3A%2F%2Fapp.themrpercent.com%2F"
+          >Open the app</a
+        >
       </div>
     </footer>
 
