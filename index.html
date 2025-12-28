@@ -28,8 +28,7 @@
 
       body {
         margin: 0;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         background: radial-gradient(circle at top, #0f172a, #020617 55%);
         color: var(--text-main);
       }
@@ -193,6 +192,37 @@
         box-shadow: 0 20px 45px rgba(168, 85, 247, 0.5);
       }
 
+      /* ===== Add to Home Screen Banner ===== */
+
+      .add-to-home-info {
+        max-width: 480px;
+        margin: 1.5rem auto 0;
+        font-size: 0.9rem;
+        color: var(--text-soft);
+        line-height: 1.4;
+        background: rgba(59, 130, 246, 0.08);
+        border: 1px solid rgba(59, 130, 246, 0.4);
+        border-radius: 12px;
+        padding: 0.9rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .add-to-home-info p {
+        margin: 0;
+        text-align: center;
+        flex: 1;
+      }
+
+      #a2hs-close {
+        background: none;
+        border: none;
+        color: var(--text-soft);
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
       /* ================= Pillars ================= */
 
       .pillars {
@@ -231,17 +261,9 @@
         font-size: 1.1rem;
       }
 
-      .ai {
-        background: var(--accent-soft);
-      }
-
-      .playbook {
-        background: rgba(34, 197, 94, 0.18);
-      }
-
-      .metrics {
-        background: var(--primary-soft);
-      }
+      .ai { background: var(--accent-soft); }
+      .playbook { background: rgba(34, 197, 94, 0.18); }
+      .metrics { background: var(--primary-soft); }
 
       /* ================= Footer ================= */
 
@@ -311,6 +333,14 @@
             Start for free
           </button>
         </div>
+
+        <!-- Add to Home Screen Banner -->
+        <div id="a2hs-banner" class="add-to-home-info">
+          <p>
+            Not on the App Store yet? Open this page in your browser, click the <strong>Share</strong> button, and select <strong>Add to Home Screen</strong> to access it like an app.
+            <button id="a2hs-close">✕</button>
+          </p>
+        </div>
       </section>
 
       <section class="pillars container">
@@ -352,16 +382,25 @@
     <footer>
       <div class="container footer-inner">
         <div>© <span id="year"></span> TheMrPercent™️</div>
-        <a
-          href="https://app.themrpercent.com/login?from_url=https%3A%2F%2Fapp.themrpercent.com%2F"
-          >Open the app</a
-        >
+        <a href="https://app.themrpercent.com/login?from_url=https%3A%2F%2Fapp.themrpercent.com%2F">Open the app</a>
       </div>
     </footer>
 
     <script>
-      document.getElementById("year").textContent =
-        new Date().getFullYear();
+      // Footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Dismissible Add to Home Screen banner
+      if (!localStorage.getItem('a2hsDismissed')) {
+        document.getElementById('a2hs-banner').style.display = 'flex';
+      } else {
+        document.getElementById('a2hs-banner').style.display = 'none';
+      }
+
+      document.getElementById('a2hs-close').addEventListener('click', function() {
+        document.getElementById('a2hs-banner').style.display = 'none';
+        localStorage.setItem('a2hsDismissed', 'true');
+      });
     </script>
   </body>
 </html>
